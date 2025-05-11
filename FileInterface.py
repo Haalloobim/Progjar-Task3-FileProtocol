@@ -49,6 +49,23 @@ class FileInterface:
             
         except Exception as e:
             return dict(status='ERROR', data=str(e))
+    
+    def delete(self, params=[]):
+        try:
+            filename = params[0]
+            if (filename == ''):
+                return dict(status='ERROR', data="Parameter tidak lengkap")
+            
+            os.remove(filename)
+            
+            checkFileDeleted = os.path.exists(filename)
+            
+            if checkFileDeleted:
+                return dict(status='ERROR', data=f"File {filename} gagal dihapus")
+            
+            return dict(status='OK', data=f"File {filename} berhasil dihapus")
+        except Exception as e:
+            return dict(status='ERROR', data=str(e))
 
 
 
