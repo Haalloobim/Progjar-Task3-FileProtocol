@@ -45,3 +45,34 @@
 - **GAGAL**:
   - `status: ERROR`  
   - `data: pesan kesalahan`
+
+---
+
+## ADD
+**TUJUAN**:  Untuk melakukan upload file dari client ke dalam server. 
+**PARAMETER**:
+- `PARAMETER1`: nama file  
+- `PARAMETER2`: data isi file
+
+### RESULT:
+- **BERHASIL**:
+  - `status: OK`  
+  - `data_namafile`: nama file yang diminta  
+- **GAGAL**:
+  - `status: ERROR`  
+  - `data: pesan kesalahan`
+
+  ---
+
+## DELETE
+**TUJUAN**:  Untuk melakukan proses penghapusan file pada server terhadap file yang diinginkan client
+**PARAMETER**:
+- `PARAMETER1`: nama file  
+
+### RESULT:
+- **BERHASIL**:
+  - `status: OK`  
+  - `data_namafile`: nama file yang diminta  
+- **GAGAL**:
+  - `status: ERROR`  
+  - `data: pesan kesalahan`
