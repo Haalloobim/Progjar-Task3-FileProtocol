@@ -14,23 +14,27 @@ class ProcessTheClient(threading.Thread):
     def __init__(self, connection, address):
         self.connection = connection
         self.address = address
+        self.data_received = "" 
         threading.Thread.__init__(self)
 
     def run(self):
         while True:
-            data = self.connection.recv(32)
+            data = self.connection.recv(4096)
             if data:
-                d = data.decode()
-                hasil = fp.proses_string(d)
-                hasil=hasil+"\r\n\r\n"
-                self.connection.sendall(hasil.encode())
+                self.data_received += data.decode()
+                if "\r\n\r\n" in self.data_received:
+                    d = self.data_received.strip()
+                    hasil = fp.proses_string(d)
+                    hasil = hasil + "\r\n\r\n"
+                    self.connection.sendall(hasil.encode())
+                    self.data_received = ""  #-- Resetting message buffer --# 
             else:
                 break
         self.connection.close()
 
 
 class Server(threading.Thread):
-    def __init__(self,ipaddress='0.0.0.0',port=8889):
+    def __init__(self,ipaddress='0.0.0.0', port=6666):
         self.ipinfo=(ipaddress,port)
         self.the_clients = []
         self.my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
