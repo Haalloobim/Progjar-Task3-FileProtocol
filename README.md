@@ -53,5 +53,5 @@ Untuk keperluan produksi, pastikan port yang digunakan tidak terbuka untuk publi
 
 ## 🧑‍💻 Author
 - Nama: Muhammad Bimatara Indianto
-- Tugas: Pembuatan Time Server TCP Multithreaded
+- Tugas: Pembuatan File protocol Client Server
 - Mata Kuliah: Pemrograman Jaringan 
