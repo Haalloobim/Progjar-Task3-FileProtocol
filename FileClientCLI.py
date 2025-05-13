@@ -5,7 +5,7 @@ import logging
 import os
 
 IP = '0.0.0.0'
-PORT = 7777
+PORT = 6666
 
 server_address=(IP, PORT)
 
